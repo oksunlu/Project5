@@ -1,14 +1,12 @@
 package test_cases;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utilities.DriverClass;
 
-public class US501 extends DriverClass {
+public class US501_Duygu extends DriverClass {
     //### As a user, I want to register on the website [https://demo.nopcommerce.com/ ]
     //so that I can access personalized content, view special offers, and enjoy other advantages.
  @Test (dataProvider = "registrationInfo")

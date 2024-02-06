@@ -2,12 +2,13 @@ package test_cases;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utilities.DriverClass;
 
-public class US503 extends DriverClass {
+import java.time.Duration;
+
+public class US503_Duygu extends DriverClass {
     //As a user, I want to be able to log in to the website using the data provider method so that I can test both valid and invalid email and password combinations,
     // check warnings during unsuccessful login attempts, and finally log in successfully with a valid combination.
 
@@ -23,10 +24,12 @@ public class US503 extends DriverClass {
     driver.findElement(By.id("Password")).sendKeys(password);
 
 
+
     WebElement loginClick = driver.findElement(By.cssSelector("button.button-1.login-button"));
     loginClick.click();
 
     //add wait here
+   // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 
 
 
