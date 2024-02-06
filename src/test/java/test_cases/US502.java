@@ -10,7 +10,9 @@ public class US502 extends DriverClass {
     //As a user, I want to be able to log in to the website
     // so that I can access the features on the platform using the profile I created before.
     @Test (dataProvider = "loginData")
-    void login(String email, String password) {
+
+
+    public void login(String email, String password) {
         WebElement loginButton = driver.findElement(By.className("ico-login"));
         loginButton.click();
 
@@ -38,4 +40,7 @@ public class US502 extends DriverClass {
         return infoArray;
 
     }
+
+
+
 }
