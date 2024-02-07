@@ -25,6 +25,8 @@ public class DriverClass {
 
     public static Actions actions;
 
+    //Actions action = new Actions(driver); ---> Action ile ilgili bir sorun var!!!!
+
     @BeforeClass(alwaysRun = true) // Before Class doesn't work with groups. Because we are not running the class.
     // We are running some tests in the class. To make sure it runs all the time we should add alwaysRun=true
     @Parameters("browserName")
@@ -53,7 +55,7 @@ public class DriverClass {
         driver.get("https://demo.nopcommerce.com/");
 
 
-       // login();
+        // login();
     }
 
     //@AfterClass(alwaysRun = true)
@@ -82,8 +84,9 @@ public class DriverClass {
 //    }
 
     public static final Logger logger = LogManager.getLogger();
+
     @BeforeMethod(alwaysRun = true)
-    public void logsBeforeTest(ITestResult testResult){
+    public void logsBeforeTest(ITestResult testResult) {
         //System.out.println("Test has started");
         // all -> trace -> debug -> info -> warn -> error -> fatal each logging level shows logs with that level and above
 
@@ -94,9 +97,10 @@ public class DriverClass {
 //        logger.error("Error level log");
 //        logger.fatal("Fatal level log");
 
-        logger.info(testResult.getMethod().getMethodName()+ " test has started");
+        logger.info(testResult.getMethod().getMethodName() + " test has started");
     }
-    public void closePreviousDrivers(){
+
+    public void closePreviousDrivers() {
         try {
             if (Platform.getCurrent().is(Platform.MAC)) {
                 Runtime.getRuntime().exec("pkill -f chromedriver");
@@ -109,9 +113,17 @@ public class DriverClass {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void logsAfterTest(ITestResult testResult){
+    public void logsAfterTest(ITestResult testResult) {
         //System.out.println("Test has ended");
 //        logger.info("Info level log for test end");
-        logger.info(testResult.getMethod().getMethodName()+" has ended with status of "+testResult.getStatus());
+        logger.info(testResult.getMethod().getMethodName() + " has ended with status of " + testResult.getStatus());
+    }
+
+    public static WebDriver getDriver() {
+        if (driver == null) { // If we don't have any  drivers create a new driver for us. But if we already have a driver don't create a new one give us the old one
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+        }
+        return driver;
     }
 }
