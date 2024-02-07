@@ -11,16 +11,16 @@ public class LoginPage extends DriverClass {
     }
 
     @FindBy (className = "ico-login")
-    WebElement loginPage;
+    public WebElement loginPart;
 
     @FindBy (id = "Email")
-    WebElement email;
+    public WebElement email;
 
     @FindBy ( id = "Password")
-    WebElement password;
+    public WebElement password;
 
     @FindBy (css = "button.button-1.login-button")
-WebElement loginButton;     //css demek sorun olur mu???
+    public WebElement loginButton;     //css demek sorun olur mu???
 
 
 
